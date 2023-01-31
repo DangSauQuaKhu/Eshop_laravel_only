@@ -1,0 +1,10 @@
+#log-in{
+    margin-right: 12px;
+}
+.card{
+    display: flex;
+}
+#img-pro {
+    height: 120px; 
+    width: 100%;
+   }
