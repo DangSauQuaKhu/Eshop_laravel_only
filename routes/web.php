@@ -36,7 +36,7 @@ use Illuminate\Support\Facades\Auth;
   Route::post('place-order',[CheckoutController::class,'placeorder']);
  });
  Auth::routes();
-
+ Route::get('load-cart-data',[CartController::class,'cartcount']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::middleware(['auth','isAdmin'])->group( function () {

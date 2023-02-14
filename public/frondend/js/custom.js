@@ -1,4 +1,26 @@
 $(function(){
+    loadcart();
+    function loadcart()
+ {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+       })
+    $.ajax(
+        {
+            method:"GET",
+            url:"/load-cart-data",
+            success:function(response)
+            {
+               $('.cart-count').html();
+                $('.cart-count').html(response.count);
+                
+            }
+
+        }
+    );
+ }
     $('.addToCartBtn').click(function(e)
     {
      e.preventDefault();
@@ -20,6 +42,7 @@ $(function(){
              },
              success: function (response) {
               swal("", response.status,"success");
+              window.location.reload();
              }
          });
    
@@ -96,4 +119,6 @@ $(function(){
         })
      }
      );
+     
  });
+ 
