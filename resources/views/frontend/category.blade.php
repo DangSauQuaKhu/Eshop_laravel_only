@@ -16,7 +16,7 @@
                             <img src="{{asset('assets/uploads/category/'.$item->image)}}" alt="cate image" id="img-pro">
                             <div class="card-body">
                                 <h6>{{$item->name}}</h6>
-                                <p>{{$item->description}}</p>
+                                {{-- <p>{{$item->description}}</p> --}}
                             </div>
                         </div>
                     </a>
@@ -37,7 +37,7 @@
                             <img src="{{asset('assets/uploads/category/'.$item->image)}}" alt="cate image" id="img-pro">
                             <div class="card-body">
                                 <h6>{{$item->name}}</h6>
-                                <p>{{$item->description}}</p>
+                                {{-- <p>{{$item->description}}</p> --}}
                             </div>
                         </div>
                     </a>

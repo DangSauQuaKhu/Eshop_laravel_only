@@ -9,7 +9,7 @@
     </div>
 </div>
 <div class="container">
-    <div class="card shadow">
+    <div class="card shadow product_data">
     <div class="card-body">
         <div class="row">
             <div class="col-md-4 border-right">
@@ -38,23 +38,35 @@
     
                 @endif
                 <div class="row mt-2">
-                    <div class="col-md-2">
+                    <div class="col-md-3">
+                        <input type="hidden" value="{{$product->id}}" class="prod_id">
                         <label for="Quantity">Quantity</label>
-                        <div class="input-group text-center mb-3">
-                            <span class="input-group-text">-</span>
-                            <input type="text" name="quantity" value="1" class="form-control">
-                            <span class="input-group-text">+</span>
+                        <div class="input-group text-center mb-3" style="width: 110px;">
+                            <button class="input-group-text decrement-btn">-</button>
+                            <input type="text" name="quantity"  class="form-control qty-input text-center" value="1">
+                            <button class="input-group-text increment-btn">+</button>
     
                         </div>
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-9">
                         <br/>
-                        <button type="button" class="btn btn-success me-3 float-start">Add to Wishlist</button>
-                        <button type="button" class="btn btn-primary me-3 float-start">Add to Cart</button>
-    
+                        @if ($product->qty>0)
+                        <label class="badge bg-success">In stock</label>
+                        <button type="button" class="btn btn-primary me-3 float-start addToCartBtn">Add to Cart <i class="fa fa-shopping-cart"></i></button>
+
+
+                        @else            
+                        @endif
+                        <button type="button" class="btn btn-success me-3 float-start">Add to Wishlist <i class="fa fa-heart"></i></button>
+
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="col-md-12">
+            <hr>
+            <h3>Description</h3>
+            <p>{{$product->description}}</p>
         </div>
     </div>
 </div>
@@ -62,3 +74,4 @@
 </div>
 
 @endsection
+

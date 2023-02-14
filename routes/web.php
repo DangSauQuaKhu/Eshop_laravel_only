@@ -3,6 +3,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\frontend\FrontendController;
+use App\Http\Controllers\frontend\CartController;
+use App\Http\Controllers\frontend\CheckoutController;
+use Illuminate\Support\Facades\Auth;
 
 
 /*
@@ -23,7 +26,15 @@ use App\Http\Controllers\frontend\FrontendController;
  Route::get('category',[FrontendController::class,'category']);
  Route::get('view-category/{id}',[FrontendController::class,'viewcategory']);
  Route::get('view-category/{id}/{pr_id}',[FrontendController::class,'viewproduct']);
-
+ Route::post('add-to-cart',[CartController::class,'addProduct']);
+ Route::post('delete-cart-item',[CartController::class,'deleteproduct']);
+ Route::post('update-cart',[CartController::class,'updatecart']);
+ Route::middleware(['auth'])->group(function(){
+  // Route::post('add-to-cart',[CartController::class,'addProduct']);
+  Route::get('cart',[CartController::class,'viewCart']);
+  Route::get('checkout',[CheckoutController::class,'index']);
+  Route::post('place-order',[CheckoutController::class,'placeorder']);
+ });
  Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
